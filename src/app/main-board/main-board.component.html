@@ -1,1 +1,8 @@
-<p>main-board works!</p>
+<ng-scrollbar id="tableWrapper" thumbClass="scrollbar-thumb" track="vertical" trackClass="scrollbar" visibility="hover">
+  <div fxFlexFill fxLayoutAlign="center center" fxLayoutGap="1rem grid" id="cardWrapper">
+    <app-new-card fxFlex="25" fxFlex.lt-lg="33" fxFlex.lt-md="50" fxFlex.lt-sm="100"></app-new-card>
+    <ng-container *ngFor="let card of cards$ | async">
+      <app-card-preview [card]="card" fxFlex="25" fxFlex.lt-lg="33" fxFlex.lt-md="50" fxFlex.lt-sm="100"></app-card-preview>
+    </ng-container>
+  </div>
+</ng-scrollbar>

@@ -17,7 +17,6 @@
   min-width: calc(100%) !important;
 }
 
-
 @mixin fill-available {
   height: -webkit-fill-available;
   width: -webkit-fill-available;
@@ -75,7 +74,7 @@
   margin: 0 !important;
 }
 
-@mixin def-font-family($size, $spacing: normal, $height: normal, $weight: normal) {
+@mixin def-font-family($size: 1rem, $spacing: normal, $height: normal, $weight: normal) {
   font-family: Inter, system-ui !important;
   font-size: $size !important;
   font-weight: $weight !important;
@@ -87,7 +86,7 @@
 }
 
 @mixin table-font() {
-  @include def-font-family(.813rem);
+  @include def-font-family(0.813rem);
   line-height: 1.55 !important;
 }
 
