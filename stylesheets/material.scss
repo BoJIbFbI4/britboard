@@ -1,5 +1,5 @@
 @use '~@angular/material' as mat;
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~@angular/material/prebuilt-themes/purple-green.css';
 @import 'variables';
 
 @include mat.core();
@@ -10,13 +10,13 @@ $britboard-light-primary: mat.define-palette(mat.$indigo-palette);
 $britboard-light-accent: mat.define-palette(mat.$pink-palette);
 $britboard-light-warn: mat.define-palette(mat.$red-palette);
 $britboard-light-theme: mat.define-light-theme(
-                (
-                        color: (
-                                primary: $britboard-light-primary,
-                                accent: $britboard-light-accent,
-                                warn: $britboard-light-warn,
-                        ),
-                )
+  (
+    color: (
+      primary: $britboard-light-primary,
+      accent: $britboard-light-accent,
+      warn: $britboard-light-warn,
+    ),
+  )
 );
 
 /* dark-theme*/
@@ -24,13 +24,13 @@ $britboard-dark-primary: mat.define-palette(mat.$grey-palette, 900);
 $britboard-dark-accent: mat.define-palette(mat.$deep-orange-palette, 500);
 $britboard-dark-warn: mat.define-palette(mat.$red-palette, 800);
 $britboard-dark-theme: mat.define-dark-theme(
-                (
-                        color: (
-                                primary: $britboard-dark-primary,
-                                accent: $britboard-dark-accent,
-                                warn: $britboard-dark-warn,
-                        ),
-                )
+  (
+    color: (
+      primary: $britboard-dark-primary,
+      accent: $britboard-dark-accent,
+      warn: $britboard-dark-warn,
+    ),
+  )
 );
 
 @include mat.all-component-themes($britboard-dark-theme);

@@ -1,0 +1,46 @@
+<mat-card fxFlex="auto" fxLayout="column" fxLayoutGap="2rem">
+  <ng-template *ngIf="!isEditMode && !!data?.card; then card; else creationForm"></ng-template>
+  <mat-divider></mat-divider>
+
+  <mat-card-actions align="end">
+    <ng-container *ngIf="isEditMode; then save; else edit"></ng-container>
+  </mat-card-actions>
+</mat-card>
+
+<ng-template #save>
+  <button mat-stroked-button>Close</button>
+  <button (click)="requestDelete()" *ngIf="!!data?.card" mat-stroked-button>Delete</button>
+  <button (click)="onPost()" [disabled]="!cardForm.valid || !cardForm.dirty" color="accent" mat-stroked-button>Post</button>
+</ng-template>
+
+<ng-template #edit>
+  <button (click)="isEditMode = !isEditMode" color="accent" mat-stroked-button>Edit</button>
+</ng-template>
+
+<ng-template #card>
+  <mat-card-title> {{ data!.card.author_name }}'s note</mat-card-title>
+  <mat-divider></mat-divider>
+  <mat-card-content fxFlex="auto">
+    {{ data!.card.content }}
+  </mat-card-content>
+</ng-template>
+
+<ng-template #creationForm>
+  <mat-card-content fxFlex="auto" fxLayout="column" fxLayoutGap="2rem">
+    <div fxFlex="auto" fxLayout="column">
+      <mat-label>Who are u?</mat-label>
+      <mat-form-field appearance="outline">
+        <input [formControl]="authorControl" matInput />
+        <mat-error>{{ authorControl.errors | readError }}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="auto" fxLayout="column">
+      <mat-label>What do u gonna save?</mat-label>
+      <mat-form-field appearance="outline">
+        <textarea [formControl]="contentControl" cdkTextareaAutosize matInput></textarea>
+        <mat-error>{{ contentControl.errors | readError: 'content' }}</mat-error>
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+</ng-template>
