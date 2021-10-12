@@ -1,7 +1,8 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { takeUntil, tap } from 'rxjs/operators';
 import { CardEntity } from '../../../core/models/card.model';
 import { BoardFacade } from '../../../core/store/board/board.facade';
@@ -14,10 +15,10 @@ import { Destroy } from '../../services/destroy.service';
   viewProviders: [Destroy],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MainCardComponent implements OnInit, AfterViewInit {
+export class MainCardComponent implements OnInit, AfterViewInit, OnDestroy {
   cardForm = new FormGroup({}, { updateOn: 'change' });
   authorControl = new FormControl('', [Validators.required, Validators.maxLength(30), Validators.minLength(1)]);
-  contentControl = new FormControl('', { validators: [Validators.required] });
+  contentControl = new FormControl('', { validators: [Validators.required, Validators.maxLength(800)] });
   isEditMode: boolean = false;
 
   constructor(
@@ -26,7 +27,8 @@ export class MainCardComponent implements OnInit, AfterViewInit {
     private readonly _fb: FormBuilder,
     private readonly boardFacade: BoardFacade,
     private readonly matSnackBar: MatSnackBar,
-    private readonly $destroy: Destroy
+    private readonly $destroy: Destroy,
+    private readonly router: Router
   ) {
     this.cardForm = _fb.group({
       author: this.authorControl,
@@ -88,4 +90,8 @@ export class MainCardComponent implements OnInit, AfterViewInit {
   requestDelete = () => this.boardFacade.removeCard(<CardEntity>this.data?.card);
 
   ngAfterViewInit(): void {}
+
+  ngOnDestroy(): void {
+    this.router.navigate([], { queryParamsHandling: '' });
+  }
 }

@@ -8,7 +8,7 @@
 </mat-card>
 
 <ng-template #save>
-  <button mat-stroked-button>Close</button>
+  <button mat-dialog-close mat-stroked-button>Close</button>
   <button (click)="requestDelete()" *ngIf="!!data?.card" mat-stroked-button>Delete</button>
   <button (click)="onPost()" [disabled]="!cardForm.valid || !cardForm.dirty" color="accent" mat-stroked-button>Post</button>
 </ng-template>

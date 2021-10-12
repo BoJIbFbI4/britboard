@@ -1,0 +1,10 @@
+@import '~stylesheets/utils';
+
+h2 {
+  @include def-font-family(2rem);
+}
+
+#logoutBtn {
+  right: 16px;
+  position: absolute;
+}
