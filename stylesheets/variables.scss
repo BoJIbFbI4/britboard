@@ -1,0 +1,36 @@
+@import '~@angular/material/theming';
+
+$dark-grey: rgb(32, 34, 39);
+$dark: rgb(22, 25, 29);
+$white-10: rgba(255, 255, 255, 0.1);
+$dark-selected: rgba(255, 255, 255, 0.2);
+$drawer-background: rgb(22, 25, 29);
+$main-background: rgb(32, 34, 39);
+$header-background: rgba(255, 255, 255, 0.1);
+$cell-selected-background: rgba(255, 255, 255, 0.1);
+$cell-background: rgba(255, 255, 255, 0.03);
+$cell-border: solid 0.5px $dark-grey;
+$accent: #ff5722;
+$table-background: rgba(255, 255, 255, 0.03);
+
+$grid-breakpoints: (
+  xs: 0,
+  nm: 320px,
+  im: 360px,
+  mkm: 400px,
+  mm: 480px,
+  sm: 550px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  hg: 1400px,
+  xh: 1600px,
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1160px,
+  hg: 1360px,
+);

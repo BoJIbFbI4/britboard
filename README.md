@@ -1,2 +1,0 @@
-# britboard
-Angular test project
